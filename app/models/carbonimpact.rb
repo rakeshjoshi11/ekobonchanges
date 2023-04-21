@@ -1,0 +1,2 @@
+class Carbonimpact < ApplicationRecord
+end
