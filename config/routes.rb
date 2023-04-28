@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
- resources :transactions
+ resources :actions
+
+ resources :flights do
+  collection do 
+    get :country
+  end
+ end
+
+ #tracks activity of each and every transaction.
+ resources :activities do 
+  collection do 
+    patch :activity
+    delete :activity_delete
+  end
+ end
+   
+
  resources :carbonimpacts  do
     collection do
      post :total_impact

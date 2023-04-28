@@ -2,19 +2,21 @@ class TransactionsController < ApplicationController
     protect_from_forgery with: :null_session
     require 'securerandom'
 
+  #      
+
   def index
     @trans = Transaction.all
-  end
+    render json: {user_info: {@trans=> @trans}}, status: :ok
+  end                    
 
   def new
     @trans = Transaction.new
   end
 
   def create
-    @trans = Transaction.new(trans_params)
-     transaction_id = SecureRandom.hex
-   if @trans.save
     byebug
+   @trans = Transaction.new(trans_params)
+   if @trans.save!
     render json: {user_info: {@trans=> @trans}}, status: :created
    else
     render json: { errors: @user.errors.full_messages },
@@ -29,6 +31,6 @@ class TransactionsController < ApplicationController
 
   private
  def trans_params
-    params.permit(:first_name,:last_name,:city,:country,:address,:transaction_id,:token)
+    params.permit(:transaction_id,:project_name,:carbonoffset,:offsetamount, :partner_id )
  end
 end

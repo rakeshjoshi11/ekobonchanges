@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   # def not_found
   #   render json: { error: 'not_found' }
   # end
@@ -17,4 +16,6 @@ class ApplicationController < ActionController::Base
   #     render json: { errors: e.message }, status: :unauthorized
   #   end
   # end
+
+  
 end

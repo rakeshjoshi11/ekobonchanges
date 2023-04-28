@@ -31,7 +31,7 @@ class CarbonimpactsController < ApplicationController
         else
            render json: { error: 'could not calculate '}, status: :unauthorized
         end
-      params[:power_source].present?
+     params[:power_source].present?
           if  params[:power_source] == "\"renewable\"" 
               a = (100.to_f * 100.to_f)
               b= a/1000

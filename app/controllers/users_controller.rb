@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
 
     def edit
-      #/users/:_username/edit
+      #/users/ /edit
     end
   
     # POST /users
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       if @user.save
         render json: {user_info: {@user=> @user}}, status: :created
       else
-        render json: { errors: @user.errors.full_messages },
+        render json: {errors: @user.errors.full_messages },
                status: :unprocessable_entity
       end
     end

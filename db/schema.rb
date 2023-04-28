@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_110904) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_112015) do
+  create_table "actions", force: :cascade do |t|
+    t.string "project_name"
+    t.string "carbonoffset"
+    t.string "offsetamount"
+    t.string "transaction_id"
+    t.string "partner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "project_name"
+    t.string "carbonoffset"
+    t.string "offsetamount"
+    t.string "partner_id"
+    t.string "transaction_id"
+    t.string "distribution"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "carbonimpacts", force: :cascade do |t|
     t.string "fuel_type"
     t.string "power_source"
@@ -18,14 +39,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_110904) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "country"
-    t.string "address"
-    t.string "city"
-    t.string "transaction_id"
-    t.string "token"
+  create_table "flights", force: :cascade do |t|
+    t.string "from"
+    t.string "to"
+    t.string "passenger"
+    t.string "class_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partners", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
